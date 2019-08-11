@@ -12,14 +12,58 @@ logo.addEventListener('mouseover', (event) => {
     logo.style.display = "none";
 });
 
-const pics = document.querySelectorAll('img');
-pics.forEach(img => {
-    img.addEventListener('keypress', (event) => {
-        img.style.opacity = "0.5";
-    });
-});
+let docBody = document.querySelector("body")
+docBody.addEventListener("keydown", (event) => {
+    docBody.style.backgroundColor = "beige";
+})
 
-const bus = document.querySelector('img');
+docBody.addEventListener("keyup", (event) => {
+    docBody.style.backgroundColor = "white";
+})
 
-console.log(pics);
-console.log(bus);
+docBody.addEventListener("wheel", (event) => {
+    docBody.style.backgroundColor = "lightblue";
+    event.stopPropagation();
+})
+
+window.addEventListener("resize", (event) => {
+    alert("Hey, I see you resized me!")
+})
+
+
+//adding form to allow additional event handlers
+
+const homeContainer = document.querySelector('.home');
+
+const docForm = document.createElement('form');
+docForm.id = 'form'
+
+const formName = document.createElement('input');
+formName.setAttribute('type', 'text');
+docForm.appendChild(formName);
+
+const formEmail = document.createElement('input');
+formEmail.setAttribute('type', 'text');
+
+docForm.addEventListener("focus", (event) => {
+    event.target.style.backgroundColor = "pink"
+    console.log("Focus.")
+}, true)
+
+docForm.addEventListener("blur", (event) => {
+    event.target.style.backgroundColor = ""
+    console.log("Blur.")
+}, true)
+
+docForm.appendChild(formEmail);
+homeContainer.appendChild(docForm);
+
+
+const destHeader = document.querySelectorAll('.destination h4');
+destHeader.forEach(heading => {
+    heading.addEventListener('dblclick', (event) => {
+        heading.style.fontSize = '4.0rem';
+    })
+})
+
+
